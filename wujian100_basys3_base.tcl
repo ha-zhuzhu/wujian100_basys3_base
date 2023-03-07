@@ -1,9 +1,9 @@
 #*****************************************************************************************
-# Vivado (TM) v2022.1 (64-bit)
+# Vivado (TM) v2022.2 (64-bit)
 #
 # wujian100_basys3_base.tcl: Tcl script for re-creating project 'wujian100_basys3_base'
 #
-# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
 #
 # This file contains the Vivado Tcl commands for re-creating the project to the state*
 # when this script was generated. In order to re-create the project, please source this
@@ -18,7 +18,6 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
- "[file normalize "$origin_dir/ip/clk_wiz_0/clk_wiz_0.xci"]"\
  "[file normalize "$origin_dir/src/designs/wujian100/soc/E902_20191018.v"]"\
  "[file normalize "$origin_dir/src/designs/wujian100/soc/sim_lib/PAD_DIG_IO.v"]"\
  "[file normalize "$origin_dir/src/designs/wujian100/soc/sim_lib/PAD_OSC_IO.v"]"\
@@ -61,6 +60,7 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/src/designs/wujian100/soc/params/wdt_params.v"]"\
  "[file normalize "$origin_dir/src/designs/wujian100/soc/wdt.v"]"\
  "[file normalize "$origin_dir/src/designs/wujian100/fpga/wujian100_open_fpga_top.v"]"\
+ "[file normalize "$origin_dir/ip/clk_wiz_0/clk_wiz_0.xci"]"\
  "[file normalize "$origin_dir/src/constraints/XC7A200T3B.xdc"]"\
   ]
   foreach ifile $files {
@@ -171,29 +171,30 @@ set_property -name "revised_directory_structure" -value "1" -objects $obj
 set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj
 set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj
 set_property -name "simulator.activehdl_gcc_version" -value "9.3.0" -objects $obj
-set_property -name "simulator.activehdl_version" -value "12.0" -objects $obj
+set_property -name "simulator.activehdl_version" -value "13.0" -objects $obj
 set_property -name "simulator.ies_gcc_version" -value "6.2.0" -objects $obj
 set_property -name "simulator.ies_version" -value "15.20.083" -objects $obj
 set_property -name "simulator.modelsim_gcc_version" -value "7.4.0" -objects $obj
-set_property -name "simulator.modelsim_version" -value "2021.3" -objects $obj
+set_property -name "simulator.modelsim_version" -value "2022.2" -objects $obj
 set_property -name "simulator.questa_gcc_version" -value "7.4.0" -objects $obj
-set_property -name "simulator.questa_version" -value "2021.3" -objects $obj
+set_property -name "simulator.questa_version" -value "2022.2" -objects $obj
 set_property -name "simulator.riviera_gcc_version" -value "9.3.0" -objects $obj
-set_property -name "simulator.riviera_version" -value "2021.04" -objects $obj
+set_property -name "simulator.riviera_version" -value "2022.04" -objects $obj
 set_property -name "simulator.vcs_gcc_version" -value "9.2.0" -objects $obj
 set_property -name "simulator.vcs_version" -value "S-2021.09" -objects $obj
 set_property -name "simulator.xcelium_gcc_version" -value "9.3.0" -objects $obj
 set_property -name "simulator.xcelium_version" -value "21.09.002" -objects $obj
 set_property -name "simulator.xsim_gcc_version" -value "6.2.0" -objects $obj
-set_property -name "simulator.xsim_version" -value "2022.1" -objects $obj
+set_property -name "simulator.xsim_version" -value "2022.2" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
-set_property -name "webtalk.activehdl_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "1" -objects $obj
+set_property -name "sim_compile_state" -value "1" -objects $obj
+set_property -name "webtalk.activehdl_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "2" -objects $obj
 set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "1" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "2" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
@@ -204,7 +205,6 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/ip/clk_wiz_0/clk_wiz_0.xci"] \
  [file normalize "${origin_dir}/src/designs/wujian100/soc/E902_20191018.v"] \
  [file normalize "${origin_dir}/src/designs/wujian100/soc/sim_lib/PAD_DIG_IO.v"] \
  [file normalize "${origin_dir}/src/designs/wujian100/soc/sim_lib/PAD_OSC_IO.v"] \
@@ -251,15 +251,6 @@ set files [list \
 add_files -norecurse -fileset $obj $files
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/ip/clk_wiz_0/clk_wiz_0.xci"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
-set_property -name "registered_with_manager" -value "1" -objects $file_obj
-if { ![get_property "is_locked" $file_obj] } {
-  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
-}
-
 set file "$origin_dir/src/designs/wujian100/soc/params/apb0_params.v"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
@@ -287,6 +278,27 @@ set_property -name "file_type" -value "Verilog Header" -objects $file_obj
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
 set_property -name "top" -value "wujian100_open_top" -objects $obj
+
+# Set 'sources_1' fileset object
+set obj [get_filesets sources_1]
+set files [list \
+ [file normalize "${origin_dir}/ip/clk_wiz_0/clk_wiz_0.xci"] \
+]
+add_files -norecurse -fileset $obj $files
+
+# Set 'sources_1' fileset file properties for remote files
+set file "$origin_dir/ip/clk_wiz_0/clk_wiz_0.xci"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
+set_property -name "registered_with_manager" -value "1" -objects $file_obj
+if { ![get_property "is_locked" $file_obj] } {
+  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
+}
+
+
+# Set 'sources_1' fileset file properties for local files
+# None
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
